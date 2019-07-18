@@ -28,4 +28,3 @@ target/
 .idea
 *.iml
 .gitignore
-src
