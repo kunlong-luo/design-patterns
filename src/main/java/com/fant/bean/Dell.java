@@ -1,8 +1,7 @@
 package com.fant.bean;
 
-public class Dell extends Computer {
+public class Dell extends Brand {
 
-    public Dell(String id, String name, String type, int size) {
-        super(id, name, type, size);
+    public Dell() {
     }
 }

@@ -1,8 +1,7 @@
 package com.fant.bean;
 
-public class Lenovo extends Computer {
+public class Lenovo extends Brand {
 
-    public Lenovo(String id, String name, String type, int size) {
-        super(id, name, type, size);
+    public Lenovo() {
     }
 }

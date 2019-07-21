@@ -1,10 +1,10 @@
 package com.fant.simpleFactory;
 
 import com.fant.bean.Computer;
-import com.fant.bean.Dell;
-import com.fant.bean.Lenovo;
-import com.fant.bean.MacBook;
-import com.fant.enums.ComputerBrand;
+import com.fant.bean.DesktopComputer;
+import com.fant.bean.NoteBookComputer;
+import com.fant.enums.ComputerBrandEnum;
+import com.fant.enums.ComputerTypeEnum;
 
 import java.util.UUID;
 
@@ -13,16 +13,27 @@ import java.util.UUID;
  */
 public class SimpleFactory {
 
-    public static Computer production(ComputerBrand brand) {
-        switch (brand) {
-            case DELL:
-                return new Dell(UUID.randomUUID().toString(),"戴尔","Dell",10);
-            case MACBOOK:
-                return new MacBook(UUID.randomUUID().toString(),"苹果","MacBook",5);
-            case LENOVO:
-                return new Lenovo(UUID.randomUUID().toString(),"联想","Lenovo",15);
+    public static Computer production(ComputerBrandEnum brand, ComputerTypeEnum type) {
+        switch (type) {
+            case NOTEBOOK:
+                return getNoteBookComputer(brand, type);
+            case DESKTOP:
+                return getDesktopComputer(brand, type);
             default:
-                throw new IllegalStateException("品牌未上市: " + brand.name());
+                throw new IllegalStateException("Unexpected value: " + type);
         }
+    }
+
+    private static Computer getDesktopComputer(ComputerBrandEnum brand, ComputerTypeEnum type) {
+        return new DesktopComputer(getId(), brand.name().toLowerCase(), type.name().toLowerCase(), brand.name().toLowerCase(), 10);
+    }
+
+    private static Computer getNoteBookComputer(ComputerBrandEnum brand, ComputerTypeEnum type) {
+
+        return new NoteBookComputer(getId(), brand.name().toLowerCase(), type.name().toLowerCase(), brand.name().toLowerCase(), 10);
+    }
+
+    private static String getId() {
+        return UUID.randomUUID().toString();
     }
 }
