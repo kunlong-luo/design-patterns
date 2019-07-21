@@ -9,7 +9,7 @@ public class CustomerTest extends BaseTest {
 
     public static void main(String[] args) {
         Customer customer = new Customer();
-        Computer buy = customer.buy(ComputerBrandEnum.DELL, ComputerTypeEnum.NOTEBOOK);
-        System.out.println(buy.toString());
+        Computer computer = customer.buy(ComputerBrandEnum.DELL, ComputerTypeEnum.NOTEBOOK);
+        System.out.println(computer.toString());
     }
 }
